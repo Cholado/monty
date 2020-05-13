@@ -10,6 +10,9 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+#define QUEUE 1
+#define STACK 0
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -39,5 +42,66 @@ typedef struct instruction_s
 char *opcode;
 void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+/**
+ * union f_type - store types regarding types of stack (or queue) management
+ * @single: function for one element only
+ * @plural: function for multiple elements
+ * @tips: function for only the first and last spots
+ * Description: allows to store types of function in the same memory location
+ */
+union f_type
+{
+	void (*single)(stack_t **head);
+	void (*plural)(stack_t **head, stack_t **tail, int value, int mode);
+	void (*tips)(stack_t **head, stack_t **tail);
+};
+
+/**
+ * struct operation_code - match each opcode to the stack management function
+ * @opcode: the opcode
+ * @f_type: function to handle the opcode
+ *
+ * Description: opcode and its function
+ */
+typedef struct operation_code
+{
+	char *opcode;
+	union f_type func;
+} op_t;
+
+/**
+ * struct global_v - global variable to handle input
+ * @buffer: string manipulation holder
+ * @linenum: number of lines
+ * @script: file stucture pointer for I/O
+ * Description: opcode and its function
+ * for stack, queues, LIFO, FIFO Holberton project
+ */
+typedef struct global_v
+{
+	char *buffer;
+	unsigned long linenum;
+	FILE *script;
+} global_v;
+
+/* tools.c */
+int isdigits(char *str);
+
+/* lexical analyzer */
+int parser(op_t *ins);
+op_t *run_instructions(void);
+void end_process(int e_num, char *message, stack_t *head);
+/* 0_push_pall.c */
+void push(stack_t **head, stack_t **tail, int val, int status);
+void pall(stack_t **head);
+/* 1_pint.c */
+void pint(stack_t **head);
+/* 2_pop.c */
+void pop(stack_t **head);
+/* 3_swap.c */
+void swap(stack_t **head, stack_t **tail);
+/* 4_add.c */
+void add(stack_t **head);
 
 #endif /* _MONTY_H_ */
