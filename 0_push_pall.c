@@ -15,7 +15,7 @@ void push(stack_t **head, stack_t **tail, int val, int status)
 	ptr = malloc(sizeof(stack_t));
 	if (ptr == NULL)
 	{
-		printf("Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		end_process(EXIT_FAILURE, NULL, *head);
 	}
 	ptr->n = val;
