@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * add - adds the top two elements of the stack.
+ * add - adds the first two elements of the stack.
  *
  * @head: pointer to first position of stack
  * Return: void

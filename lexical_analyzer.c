@@ -1,5 +1,6 @@
+#define _GNU_SOURCE
 #include "monty.h"
-#define I_DONE 6
+#define I_DONE 14
 
 static global_v gv;
 
@@ -66,7 +67,7 @@ int parser(op_t *ins)
 						end_process(EXIT_FAILURE, "usage: push integer", head);
 					ins[0].func.plural(&head, &tail, atoi(token), status);
 				}
-				else if (val < 2)
+				else if (val < 4)
 					ins[val].func.tips(&head, &tail);
 				else if (val < I_DONE)
 					ins[val].func.single(&head);
@@ -93,20 +94,36 @@ int parser(op_t *ins)
  */
 op_t *run_instructions(void)
 {
-	static op_t head[5];
+	static op_t head[14];
 
 	head[0].opcode = "push";
 	head[0].func.plural = push;
-	head[1].opcode = "swap";
-	head[1].func.tips = swap;
-	head[2].opcode = "pop";
-	head[2].func.single = pop;
-	head[3].opcode = "pall";
-	head[3].func.single = pall;
-	head[4].opcode = "pint";
-	head[4].func.single = pint;
-	head[5].opcode = "add";
-	head[5].func.single = add;
+	head[1].opcode = "rotl";
+	head[1].func.tips = rotl;
+	head[2].opcode = "rotr";
+	head[2].func.tips = rotr;
+	head[3].opcode = "swap";
+	head[3].func.tips = swap;
+	head[4].opcode = "pop";
+	head[4].func.single = pop;
+	head[5].opcode = "pall";
+	head[5].func.single = pall;
+	head[6].opcode = "pint";
+	head[6].func.single = pint;
+	head[7].opcode = "pchar";
+	head[7].func.single = pchar;
+	head[8].opcode = "pstr";
+	head[8].func.single = pstr;
+	head[9].opcode = "add";
+	head[9].func.single = add;
+	head[10].opcode = "sub";
+	head[10].func.single = sub;
+	head[11].opcode = "mul";
+	head[11].func.single = mul;
+	head[12].opcode = "div";
+	head[12].func.single = divi;
+	head[13].opcode = "mod";
+	head[13].func.single = mod;
 
 	return (head);
 }

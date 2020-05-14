@@ -103,5 +103,21 @@ void pop(stack_t **head);
 void swap(stack_t **head, stack_t **tail);
 /* 4_add.c */
 void add(stack_t **head);
+/* 6_sub.c */
+void sub(stack_t **head);
+/* 7_div.c */
+void divi(stack_t **head);
+/* 8_mul.c */
+void mul(stack_t **head);
+/* 9_mod.c */
+void mod(stack_t **head);
+/* 11_pchar.c */
+void pchar(stack_t **head);
+/* 12_pstr.c */
+void pstr(stack_t **head);
+/* 13_rotl.c */
+void rotl(stack_t **head, stack_t **tail);
+/* 14_rotr.c */
+void rotr(stack_t **head, stack_t **tail);
 
 #endif /* _MONTY_H_ */
