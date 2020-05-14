@@ -15,7 +15,7 @@ void end_process(int e_num, char *message, stack_t *head)
 	stack_t *ptr = head;
 
 	if (message != NULL)
-		printf("L%lu: %s\n", gv.linenum, message);
+		dprintf(STDOUT_FILENO, "L%lu: %s\n", gv.linenum, message);
 	while (head != NULL)
 	{
 		ptr = head->prev;
