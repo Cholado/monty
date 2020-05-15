@@ -60,7 +60,7 @@ union f_type
 /**
  * struct operation_code - match each opcode to the stack management function
  * @opcode: the opcode
- * @f_type: function to handle the opcode
+ * @func: function to handle the opcode
  *
  * Description: opcode and its function
  */

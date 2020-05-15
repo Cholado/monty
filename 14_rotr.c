@@ -6,16 +6,16 @@
  * @tail: pointer to last element  of stack
  * Description: [123] > [321]
  */
-void rotr(stack_t **top, stack_t **bot)
+void rotr(stack_t **head, stack_t **tail)
 {
-	stack_t *ptrt = *top, *ptrb = *bot;
+	stack_t *ptrt = *head, *ptrb = *tail;
 
 	if (ptrt == NULL || ptrt->prev == NULL)
 		return;
 	ptrt->next = ptrb;
 	ptrb->prev = ptrt;
-	*bot = ptrb->next;
-	(*bot)->prev = NULL;
-	*top = ptrb;
+	*tail = ptrb->next;
+	(*head)->prev = NULL;
+	*head = ptrb;
 	ptrb->next = NULL;
 }

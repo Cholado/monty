@@ -15,7 +15,7 @@ void end_process(int e_num, char *message, stack_t *head)
 	stack_t *ptr = head;
 
 	if (message != NULL)
-	        fprintf(stderr, "L%lu: %s\n", gv.linenum, message);
+		fprintf(stderr, "L%lu: %s\n", gv.linenum, message);
 	while (head != NULL)
 	{
 		ptr = head->prev;
@@ -142,13 +142,13 @@ int main(int ac, char *av[])
 
 	if (ac != 2)
 	{
-	        fprintf(stderr, "USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		return (EXIT_FAILURE);
 	}
 	gv.script = fopen(av[1], "r"); /* read file */
 	if (gv.script == NULL)
 	{
-	        fprintf(stderr, "Error: Can't open file %s\n", av[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		return (EXIT_FAILURE);
 	}
 	instructions = run_instructions();
